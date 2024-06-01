@@ -21,8 +21,6 @@ body{
     margin: 2vh auto auto auto;
 }
 #quizQuest{
-    display: grid;
-    grid-template-rows: 8fr 4fr;
     margin: auto;
     width: 70%;
     height: 85%;
@@ -31,6 +29,11 @@ body{
     border-radius: 15vh;
     text-align: center;
     padding: 1.5%;
+}
+#quizContent{
+    display: grid;
+    grid-template-rows: 4fr 1.5fr 1.5fr 1.5fr 1.5fr 4fr;
+    align-items: center;
 }
 #playButton{
     background-color: #03f8bb;
@@ -47,8 +50,53 @@ body{
 }
 #homeTitle{
     font-size: 7vh;
-    margin-bottom: 8vh;   
 }
 #quizQuest li{
     font-size: 5vh;
+}
+#questPage{
+    height: 100%;
+}
+#questHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#questHeader h2{
+    font-size: 4vh;
+}
+#questHeader h3{
+    font-size: 3vh;
+    color: #0c0c0c;
+    border: 2px solid #03f8bb;
+    padding: 1.5%;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    margin-right: 5.5vw;
+}
+#mathQuest{
+    font-size: 3.5vh;
+    border: 2px solid #03f8bb;
+    border-radius: 10vh;
+    padding: 1%;
+    justify-self: center;
+}
+#userInput{
+    font-size: 3.5vh;
+    text-align: center;
+    border: 2px solid #03f8bb;
+    border-radius: 10vh;
+    padding: 1.5%;
+}
+#confirmButton{
+    background-color: #03f8bb;
+    border-radius: 15vh;
+    border: 2px solid #0c0c0c;
+    color: #ffffff;
+    margin: auto;
+    padding: 1.7%;
+    font-size: 4vh;
+    font-weight: bolder;
 }

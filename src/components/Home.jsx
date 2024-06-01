@@ -1,5 +1,5 @@
 import React from "react";
-function Home(){
+function Home(props){
     return(
         <>
             <h2 id="homeTitle">Welcome to the Game !</h2>
@@ -7,6 +7,7 @@ function Home(){
             <li>Random generated numbers</li>
             <li>10 seconds to guess</li>
             <li>Earn 1 point per correct answer</li>
+            <button id='playButton' onClick={props.openQuests}>Start Quiz</button>
         </>
     )
 }
