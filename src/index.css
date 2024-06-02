@@ -31,9 +31,19 @@ body{
     padding: 1.5%;
 }
 #quizContent{
+    height: 100%;
+}
+#homeContent{
+    height: 100%;
     display: grid;
-    grid-template-rows: 4fr 1.5fr 1.5fr 1.5fr 1.5fr 4fr;
+    grid-template-rows: 3fr 1.5fr 1.5fr 1.5fr 1.5fr 3fr;
     align-items: center;
+}
+#homeTitle{
+    font-size: 5vh;
+}
+#quizQuest li{
+    font-size: 4.3vh;
 }
 #playButton{
     background-color: #03f8bb;
@@ -42,20 +52,17 @@ body{
     color: #ffffff;
     margin: auto;
     padding: 1.7%;
-    font-size: 6vh;
+    font-size: 5vh;
     font-weight: bolder;
+    cursor: pointer;
 }
 #playButton:hover{
     transform: scale(1.2);
 }
-#homeTitle{
-    font-size: 7vh;
-}
-#quizQuest li{
-    font-size: 5vh;
-}
 #questPage{
     height: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1.5fr 1.5fr 2fr;
 }
 #questHeader{
     display: flex;
@@ -64,9 +71,18 @@ body{
     position: relative;
 }
 #questHeader h2{
-    font-size: 4vh;
+    font-size: 6vh;
 }
-#questHeader h3{
+#points{
+    font-size: 2.5vh;
+    position: absolute;
+    left: 0;
+    margin-left: 5vw;
+    border: 2px solid #03f8bb;
+    padding: 1.5%;
+    border-radius: 10vh;
+}
+#questTimer{
     font-size: 3vh;
     color: #0c0c0c;
     border: 2px solid #03f8bb;
@@ -77,18 +93,20 @@ body{
     margin-right: 5.5vw;
 }
 #mathQuest{
-    font-size: 3.5vh;
-    border: 2px solid #03f8bb;
-    border-radius: 10vh;
-    padding: 1%;
+    margin: auto;
+    font-size: 4vh;
+    border-bottom: 5px solid #03f8bb;
+    padding: 1.5%;
     justify-self: center;
 }
 #userInput{
-    font-size: 3.5vh;
+    font-size: 4.5vh;
     text-align: center;
     border: 2px solid #03f8bb;
     border-radius: 10vh;
+    margin: auto;
     padding: 1.5%;
+    outline: none;
 }
 #confirmButton{
     background-color: #03f8bb;
@@ -96,7 +114,10 @@ body{
     border: 2px solid #0c0c0c;
     color: #ffffff;
     margin: auto;
-    padding: 1.7%;
-    font-size: 4vh;
-    font-weight: bolder;
+    padding: 2%;
+    font-size: 5vh;
+    cursor: pointer;
+}
+#confirmButton:hover,#confirmButton:focus{
+    transform: scale(1.2);
 }
