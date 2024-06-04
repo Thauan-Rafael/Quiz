@@ -1,13 +1,12 @@
 import React from 'react'
 function Quest(){
-    let numbers = []
-    let operators = []
     const [questNumber,setQuestNumber] = React.useState(1);
     const [timer, setTimer] = React.useState(10)
-    const [quest, setQuest] = React.useState(generateQuest())
-    const formatTime = (time) => {
-        return time < 10 ? `0${time}` : time
-    };
+    const [quest, setQuest] = React.useState('')
+    React.useEffect(() => {
+        setQuest(generateQuest());
+    }, []);
+    const formatTime = (time) => {return time < 10 ? `0${time}` : time};
     React.useEffect(() => {
         if(timer > 0){
             const countdown = setTimeout(() => {setTimer(timer - 1)}, 1000);
@@ -15,9 +14,37 @@ function Quest(){
         }
     },[timer])
     function generateQuest(){
-        return `${Math.floor(Math.random()*100)} + ${Math.floor(Math.random()*100)}`
+        function generateNumber(){return `${Math.floor(Math.random()*100)+1}`}
+        function generateOperation(){
+            let operatorNumber = Math.floor(Math.random()*4)
+            switch (operatorNumber) {
+                case 0:
+                    return '+'
+                    break;
+                case 1:
+                    return '-'
+                    break;
+                case 2:
+                    return '*'
+                    break;
+                case 3:
+                    return '/'
+                    break;
+                default:
+                    break;
+            }
+        }
+        let operation = `${generateNumber()} ${generateOperation()} ${generateNumber()}`; 
+        return operation; 
     }
-    generateQuest()
+    function enterValues(){
+        let answer = document.getElementById('userInput').value
+        let result = eval(quest);
+        if(answer == result){
+            setQuestNumber(2)
+            console.log("It's right")
+        }
+    }
     return(
         <>
             <div id='questPage'>
@@ -28,7 +55,7 @@ function Quest(){
                 </header>
                 <div id='mathQuest'>{quest}</div>
                 <input id='userInput' placeholder='Answer' type='number'></input>
-                <button id='confirmButton'>Confirm</button>
+                <button id='confirmButton' onClick={enterValues}>Confirm</button>
             </div>
         </>
     )
