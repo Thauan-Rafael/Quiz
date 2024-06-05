@@ -4,9 +4,8 @@ import Quest from './Quest'
 function Quiz(){
 
     const [content,setContent] = React.useState(<Home openQuests={openQuests}/>)
-    function openQuests(){
-        setContent(<Quest/>)
-    }
+    function openQuests(){setContent(<Quest openHome={openHome}/>)}
+    function openHome(){setContent(<Home openQuests={openQuests}/>)}
     return(
         <>
             <h1 id='quizTitle'>Math Quiz</h1>

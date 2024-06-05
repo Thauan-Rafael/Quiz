@@ -1,7 +1,7 @@
 import React from 'react'
-function Quest(){
+function Quest(props){
     const [questNumber,setQuestNumber] = React.useState(1);
-    const [timer, setTimer] = React.useState(10)
+    const [timer, setTimer] = React.useState(15)
     const [quest, setQuest] = React.useState('')
     React.useEffect(() => {
         setQuest(generateQuest());
@@ -12,39 +12,56 @@ function Quest(){
             const countdown = setTimeout(() => {setTimer(timer - 1)}, 1000);
             return () => clearTimeout(countdown);
         }
+        else{
+            props.openHome()
+        }
     },[timer])
     function generateQuest(){
-        function generateNumber(){return `${Math.floor(Math.random()*100)+1}`}
+        function generateNumber(){return `${Math.ceil(Math.random()*10)}`}
         function generateOperation(){
             let operatorNumber = Math.floor(Math.random()*4)
             switch (operatorNumber) {
-                case 0:
-                    return '+'
-                    break;
-                case 1:
-                    return '-'
-                    break;
-                case 2:
-                    return '*'
-                    break;
-                case 3:
-                    return '/'
-                    break;
-                default:
-                    break;
+                case 0: return '+'
+                case 1: return '-'
+                case 2: return '*'
+                case 3: return '/'
+                default: break;
             }
         }
-        let operation = `${generateNumber()} ${generateOperation()} ${generateNumber()}`; 
-        return operation; 
+        let questItens = [generateNumber(),generateOperation(),generateNumber()]
+        let questAdditions = Math.floor(questNumber/5)
+        if(questAdditions>=3){questAdditions=3;}
+        while(questAdditions > 0){
+            questItens.push(generateOperation())
+            questItens.push(generateNumber())
+            questAdditions--;
+        }
+        return `${questItens.join(' ')}`; 
     }
     function enterValues(){
-        let answer = document.getElementById('userInput').value
-        let result = eval(quest);
-        if(answer == result){
-            setQuestNumber(2)
-            console.log("It's right")
+        if(document.getElementById('userInput').value != undefined && eval(quest)!=undefined){
+            let answer = parseFloat(document.getElementById('userInput').value).toFixed(2)
+            let result = eval(quest).toFixed(2);
+            let difference = answer - result;
+            if(difference < 0.1 && difference > -0.1){
+                setQuestNumber((prevQuestNumber) => prevQuestNumber+1)
+                setQuest(generateQuest())
+                document.getElementById('userInput').value='';
+                setTimer(15)
+            }
         }
     }
+     React.useEffect(() => {
+        const pressEnter = (event) => {
+            if (event.key === 'Enter') {
+                enterValues();
+            }
+        };
+        window.addEventListener('keydown', pressEnter);
+        return () => {
+            window.removeEventListener('keydown', pressEnter);
+        };
+    }, [enterValues]);
     return(
         <>
             <div id='questPage'>
@@ -54,7 +71,7 @@ function Quest(){
                     <h3 id='questTimer'>{formatTime(timer)}</h3>
                 </header>
                 <div id='mathQuest'>{quest}</div>
-                <input id='userInput' placeholder='Answer' type='number'></input>
+                <input id='userInput' placeholder='Answer' type='number' autoFocus={true}></input>
                 <button id='confirmButton' onClick={enterValues}>Confirm</button>
             </div>
         </>
