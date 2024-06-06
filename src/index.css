@@ -13,12 +13,13 @@ body{
     background-color: #03f8bb;
     justify-items: center;
     padding: 1%;
+    align-items: center;
 }
 #quizTitle{
     color: #ffffff;
     text-shadow: 2px 2px #0c0c0c;
-    font-size: 10vh;
-    margin: 2vh auto auto auto;
+    font-size: 8.5vh;
+    margin: auto;
 }
 #quizQuest{
     margin: auto;
@@ -108,6 +109,9 @@ body{
     padding: 1.5%;
     outline: none;
 }
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
 #confirmButton{
     background-color: #03f8bb;
     border-radius: 15vh;
@@ -121,12 +125,74 @@ body{
 #confirmButton:hover,#confirmButton:focus{
     transform: scale(1.2);
 }
+.Toastify__toast-container{
+    width: auto;
+}
 .Toastify__toast{
     color: #ffffff;
     border: 3px solid #0c0c0c;
     border-radius: 10vh;
-    background-color: #03f8bb;
+    background-color: #e60e0e;
     text-align: center;
-    font-size: 3vh;
     font-weight: bolder;
+}
+@media (max-width:576px) and (orientation:portrait){
+    #quizTitle{
+        font-size: 4.3vh;
+    }
+    #quizQuest{
+        width: 85%;
+        padding: 2%;
+    }
+    #homeTitle{
+        font-size: 3.4vh;
+    }
+    #quizQuest li{
+        font-size: 3vh;
+    }
+    #playButton{
+        font-size: 3.6vh;
+        padding: 3%;
+    }
+    #questHeader h2{
+        font-size: 7.5vw;
+    }
+    #points{
+        font-size: 4vw;
+        margin-left: 2vw;
+    }
+    #questTimer{
+        font-size: 5.5vw;
+        margin-right: 4vw;
+    }
+    #mathQuest{
+        font-size: 4vh;
+    }
+    #userInput{
+        font-size: 3.5vh;
+        width: 75%;
+    }
+    #confirmButton{
+        font-size: 4vh;
+        padding: 4%;
+    }
+}
+@media (min-width:577px) and (max-width:1024px) and (orientation:portrait){
+    #quizTitle{
+        font-size: 6.5vh;
+    }
+    #quizQuest{
+        width: 80%;
+        padding: 4%;
+    }
+    #homeTitle{
+        font-size: 4.3vh;
+    }
+    #quizQuest li{
+        font-size: 3.5vh;
+    }
+    #playButton{
+        font-size: 4vh;
+        padding: 3%;
+    }
 }

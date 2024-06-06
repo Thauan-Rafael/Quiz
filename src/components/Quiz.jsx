@@ -8,7 +8,7 @@ function Quiz(){
     function openHome(){setContent(<Home openQuests={openQuests}/>)}
     return(
         <>
-            <h1 id='quizTitle'>Math Quiz</h1>
+            <h1 id='quizTitle'>RNG Math Quiz</h1>
             <div id='quizQuest'>
                 <div id='quizContent'>{content}</div>
             </div>            

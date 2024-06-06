@@ -2,7 +2,7 @@ import React from 'react'
 import {toast} from 'react-toastify'
 function Quest(props){
     const [questNumber,setQuestNumber] = React.useState(1);
-    const [timer, setTimer] = React.useState(15)
+    const [timer, setTimer] = React.useState(999)
     const [quest, setQuest] = React.useState('')
     React.useEffect(() => {
         setQuest(generateQuest());
@@ -15,7 +15,7 @@ function Quest(props){
         }
         else{
             props.openHome()
-            toast(`Time ended! Points: ${questNumber-1}`, {position: "bottom-right",autoClose: 5000,hideProgressBar: true,
+            toast(`Answer: ${eval(quest).toFixed(2)}, Points: ${questNumber-1}`, {position: "bottom-right",autoClose: 5000,hideProgressBar: true,
                 closeOnClick: true,pauseOnHover: true,theme: "light",closeButton:false,
             });
         }
@@ -42,6 +42,7 @@ function Quest(props){
         }
         return `${questItens.join(' ')}`; 
     }
+    const formatQuest = (mathQuest) => {return mathQuest.replace('*','x')}
     function enterValues(){
         if(document.getElementById('userInput').value != undefined && eval(quest)!=undefined){
             let answer = parseFloat(document.getElementById('userInput').value).toFixed(2)
@@ -74,7 +75,7 @@ function Quest(props){
                     <h2>Quest {questNumber}</h2>
                     <h3 id='questTimer'>{formatTime(timer)}</h3>
                 </header>
-                <div id='mathQuest'>{quest}</div>
+                <div id='mathQuest'>{formatQuest(quest)}</div>
                 <input id='userInput' placeholder='Answer' type='number' autoFocus={true}></input>
                 <button id='confirmButton' onClick={enterValues}>Confirm</button>
             </div>

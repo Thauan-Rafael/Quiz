@@ -8,7 +8,7 @@ function Home(props){
     return(
         <>
             <div id="homeContent">
-                <h2 id="homeTitle">Welcome to the Game !</h2>
+                <h2 id="homeTitle">Welcome to the Game</h2>
                 <li>Infinite questions</li>
                 <li>Random generated numbers</li>
                 <li>15 seconds to guess</li>
