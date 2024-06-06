@@ -121,3 +121,12 @@ body{
 #confirmButton:hover,#confirmButton:focus{
     transform: scale(1.2);
 }
+.Toastify__toast{
+    color: #ffffff;
+    border: 3px solid #0c0c0c;
+    border-radius: 10vh;
+    background-color: #03f8bb;
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bolder;
+}

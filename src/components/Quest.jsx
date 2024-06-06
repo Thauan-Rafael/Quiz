@@ -1,4 +1,5 @@
 import React from 'react'
+import {toast} from 'react-toastify'
 function Quest(props){
     const [questNumber,setQuestNumber] = React.useState(1);
     const [timer, setTimer] = React.useState(15)
@@ -14,6 +15,9 @@ function Quest(props){
         }
         else{
             props.openHome()
+            toast(`Time ended! Points: ${questNumber-1}`, {position: "bottom-right",autoClose: 5000,hideProgressBar: true,
+                closeOnClick: true,pauseOnHover: true,theme: "light",closeButton:false,
+            });
         }
     },[timer])
     function generateQuest(){
