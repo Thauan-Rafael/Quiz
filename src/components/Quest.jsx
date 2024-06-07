@@ -2,7 +2,7 @@ import React from 'react'
 import {toast} from 'react-toastify'
 function Quest(props){
     const [questNumber,setQuestNumber] = React.useState(1);
-    const [timer, setTimer] = React.useState(999)
+    const [timer, setTimer] = React.useState(15)
     const [quest, setQuest] = React.useState('')
     React.useEffect(() => {
         setQuest(generateQuest());
